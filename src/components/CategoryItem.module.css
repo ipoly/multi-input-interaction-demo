@@ -1,24 +1,32 @@
 .container {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--mantine-color-gray-3);
-  background: var(--mantine-color-white);
-  min-width: 300px;
-  gap: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: transparent;
+  gap: 8px;
   transition: background-color 0.15s ease;
 }
 
 .container:hover,
 .container:focus-within,
 .container[data-touch-focused] {
-  background: var(--mantine-color-gray-0);
+  background: var(--mantine-color-gray-1);
+}
+
+.container:focus-visible,
+.container[data-editing]:has(:focus-visible) {
+  outline: 2px solid var(--mantine-color-blue-5);
+  outline-offset: -2px;
 }
 
 .content {
   flex: 1;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
 }
 
 .menu {
@@ -43,4 +51,21 @@
 .menu[data-visible] {
   opacity: 1;
   visibility: visible;
+}
+
+/* Editing state */
+.container[data-editing] {
+  background: var(--mantine-color-gray-1);
+}
+
+.input {
+  flex: 1;
+}
+
+.editActions {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  z-index: 10;
 }
